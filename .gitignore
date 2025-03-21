@@ -1,0 +1,4 @@
+bot-venv
+__pycache__
+events.db
+.env
