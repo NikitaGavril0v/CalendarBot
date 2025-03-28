@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 DB_NAME = os.getenv("DB_NAME", "events.db")
 DEFAULT_ADMIN_ID = os.getenv("ADMIN_ID")
 TIMEZONE = os.getenv("TIMEZONE", "Europe/Moscow")
+DB_NAME = "/app/data/" + DB_NAME
 
 # Состояния ConversationHandler
 (NAME, DATE, EVENT_NAME, EVENT_DESCRIPTION, EVENT_TIME, EVENT_MAX, PHONE,
