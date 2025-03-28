@@ -835,13 +835,22 @@ async def admin_close(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик команды /help"""
-    help_text = """
+    if not DatabaseHandler.is_admin(user_id):
+        help_text = """
 📖 *Доступные команды:*
 
 /start - Начать работу с ботом
 /help - Показать это сообщение
 /events - Просмотреть доступные события
-/myevents - Показать мои записи
+/cancel - Отменить текущее действие
+        """
+    else:
+        help_text = """
+📖 *Доступные команды:*
+
+/start - Начать работу с ботом
+/help - Показать это сообщение
+/events - Просмотреть доступные события
 /cancel - Отменить текущее действие
 
 ⚙️ *Админ-команды:*
@@ -923,7 +932,6 @@ def get_handlers():
         admin_management_conv,
         CommandHandler('events', show_events),
         CommandHandler('help', help_command),
-        CommandHandler('myevents', my_events),
         CallbackQueryHandler(button_handler),
         MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)
     ]
