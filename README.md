@@ -4,40 +4,24 @@
 
 ## Перед запуском
 
-- Установить пакет sqlite3:
+- Установить docker и docker-compose:
 ```bash
-sudo apt install sqlite3
+sudo apt install docker docker-compose
 ```
-- Рекомендуется изпользовать виртуальное окружение python, пример создания:
-```bash
-python3 -m venv bot-venv
-```
-- Установить зависимости python:
-```bash
-pip install python-telegram-bot python-dotenv
-```
-- Создать файл .env в папке с bot.py и записать в него токен для бота в виде:
+- Создать файл .env в папке с docker-compose.yml и заполнить его в виде:
 ```env
 TELEGRAM_BOT_TOKEN=<TOKEN>
+DB_NAME=events.db
+ADMIN_ID=<User_Telegram_ID>
+TIMEZONE=Europe/Moscow
 ```
 ## Запуск
 ```bash
-python3 bot.py
+sudo docker-compose up -d
 ```
 
 ## Добавление админа
-- Открыть БД:
-```bash
-sqlite3 events.db
-```
-- Внести ид пользователя телеграмм в таблицу admins:
-```SQL
-INSERT INTO admins (user_id) VALUES (<id)>
-```
-- Выход:
-```SQL
-.exit
-```
+- Добавить админа можно через чат-бота в меню админов (команда /admins)
 
 ## Архитектура системы
 Компоненты системы
