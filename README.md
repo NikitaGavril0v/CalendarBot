@@ -31,8 +31,21 @@ sudo docker-compose up -d
 - Webhook/Поллинг
 - - Режим взаимодействия с Telegram (по умолчанию — поллинг).
 - База данных SQLite для хранения данных о событиях, участниках и администраторах.
-- - Таблицы: events, participants, admins, users, user_contacts.
-
+- Таблицы: events, participants, admins, users, user_contacts.
+  
+```bash
+.
+├── bot/                 # Исходный код
+│   ├── handlers.py      # Логика обработки сообщений
+│   ├── database.py      # Работа с БД
+│   ├── tg_calendar.py   # Генератор календаря
+│   ├── config.py        # Файл конфигурации
+│   └── main.py.         # Исполняемый файл
+├── data/                # Персистентные данные
+│   └── events.db       
+├── Dockerfile           # Конфигурация контейнера
+└── docker-compose.yml   # Оркестрация сервисов
+```
 ## Как пользоваться ботом
 Команды:
 - /start - Начать работу с ботом
